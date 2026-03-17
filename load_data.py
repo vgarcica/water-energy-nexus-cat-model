@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 LoadData.py - Mòdul de càrrega i processament de dades per al simulador energètic de Catalunya.
 
@@ -810,25 +811,25 @@ def cargar_datos_simulador(verbose: bool = True) -> DatosSimulador:
     # 1. DADES D'EMBASSAMENTS
     # -------------------------------------------------------------------------
     if verbose:
-        print("\n[1/8] Carregant dades d'embassaments Conca de l'Ebre (SAIH)...")
+        print("\n[1/10] Carregant dades d'embassaments Conca de l'Ebre (SAIH)...")
     df_volumen_ebre, df_pct_ebre, df_pct_ebre_h = _cargar_embalses_ebro()
     
     if verbose:
-        print("[2/8] Carregant dades d'embassaments Conques Internes (Gencat API)...")
+        print("[2/10] Carregant dades d'embassaments Conques Internes (Gencat API)...")
     df_volumen_int, df_pct_int, df_pct_int_h = _cargar_embalses_internes()
     
     # -------------------------------------------------------------------------
     # 2. CONFIGURAR INTERPOLADOR DE MÍNIM TÈCNIC HIDRÀULIC
     # -------------------------------------------------------------------------
     if verbose:
-        print("[3/8] Configurant funció de mínim tècnic hidràulic...")
+        print("[3/10] Configurant funció de mínim tècnic hidràulic...")
     _configurar_hydro_min_interpolator()
     
     # -------------------------------------------------------------------------
     # 3. DADES DE GENERACIÓ I POTÈNCIA
     # -------------------------------------------------------------------------
     if verbose:
-        print("[4/8] Carregant dades de generació i potència instal·lada...")
+        print("[4/10] Carregant dades de generació i potència instal·lada...")
     
     generacio = _cargar_generacion_cat()
     generacion_spain = _cargar_generacion_spain()
@@ -845,7 +846,7 @@ def cargar_datos_simulador(verbose: bool = True) -> DatosSimulador:
     # 4. CONSTRUIR DATAFRAME SINTÈTIC INICIAL
     # -------------------------------------------------------------------------
     if verbose:
-        print("[5/8] Construint sèries sintètiques de generació...")
+        print("[5/10] Construint sèries sintètiques de generació...")
     
     df_sintetic = pd.concat(
         (demanda['2013-01-01':'2025-01-01'], nuclears['2013-01-01':'2025-01-01']),
@@ -866,7 +867,7 @@ def cargar_datos_simulador(verbose: bool = True) -> DatosSimulador:
     # 6. PROCESSAR DEMANDA AMB AUTOCONSUM
     # -------------------------------------------------------------------------
     if verbose:
-        print("[6/8] Processant demanda i autoconsum...")
+        print("[6/10] Processant demanda i autoconsum...")
     
     autoconsum_hourly = potencia.Autoconsum.resample('h').interpolate('linear')
     
@@ -890,7 +891,7 @@ def cargar_datos_simulador(verbose: bool = True) -> DatosSimulador:
     # 7. ASSEMBLAR DATAFRAME SINTÈTIC COMPLET
     # -------------------------------------------------------------------------
     if verbose:
-        print("[7/8] Assemblant DataFrame sintètic complet...")
+        print("[7/10] Assemblant DataFrame sintètic complet...")
     
     df_sintetic = pd.concat([
         df_sintetic[START_DATE_RANGE:END_DATE_RANGE],
@@ -928,7 +929,7 @@ def cargar_datos_simulador(verbose: bool = True) -> DatosSimulador:
     # 8. DESAGREGAR HIDRÀULICA PER CONQUES
     # -------------------------------------------------------------------------
     if verbose:
-        print("[8/8] Desagregant generació hidràulica per conques...")
+        print("[8/10] Desagregant generació hidràulica per conques...")
     
     energia_turbinada_mensual_internes, energia_turbinada_mensual_ebre = \
         _desagregar_hidraulica_por_cuencas(
@@ -941,7 +942,7 @@ def cargar_datos_simulador(verbose: bool = True) -> DatosSimulador:
     # -------------------------------------------------------------------------
 
     if verbose:
-        print("[9/8] Carregant dades de dessalinització...")
+        print("[9/10] Carregant dades de dessalinització...")
 
     dessalacio = pd.read_csv('C:/Users/tirki/Dropbox/Trabajos/Energía/dessalacio_20250723.csv')
     dessalacio = dessalacio.groupby('Dia').sum()['Volum (hm3)']
@@ -952,7 +953,7 @@ def cargar_datos_simulador(verbose: bool = True) -> DatosSimulador:
     # 10. CARREGAR I ESTIMAR DADES DE REGENERACIÓ HISTÒRICA
     # -------------------------------------------------------------------------
     if verbose:
-        print("[10/8] Carregant i processant dades de regeneració...")
+        print("[10/10] Carregant i processant dades de regeneració...")
     
     # Datos del proxy
     df_proxy = pd.read_csv("regeneracion_diaria.csv", parse_dates=["Dia"])
