@@ -2,7 +2,7 @@
 """
 Created on Mon Jan 19 20:00:43 2026
 
-@author: tirki
+@author: Víctor García Carrasco
 """
 
 hydro_esc1_level = reconstruir_volum_escenari(hydro_base_level,escenaris_simulacio['Historic'],escenaris_simulacio['Sequera_Extensa'],max_capacity_int).dropna()
