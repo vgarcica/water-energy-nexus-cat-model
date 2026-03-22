@@ -2,7 +2,7 @@
 """
 Created on Sat Jan 17 01:33:09 2026
 
-@author: tirki
+@author: Víctor García Carrasco
 """
 
 def comparar_fronts_pareto(front_rgs, front_nsga, objectives, directions):
