@@ -2,7 +2,7 @@
 """
 Created on Mon Jan 19 16:51:09 2026
 
-@author: tirki
+@author: Víctor García Carrasco
 """
 
 # Diccionari de metadades per cada variable
