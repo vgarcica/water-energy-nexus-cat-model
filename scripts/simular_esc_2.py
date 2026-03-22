@@ -2,7 +2,7 @@
 """
 Created on Mon Feb  2 20:39:39 2026
 
-@author: tirki
+@author: Víctor García Carrasco
 """
 
 # Paràmetres fixes segons escenari 2030
