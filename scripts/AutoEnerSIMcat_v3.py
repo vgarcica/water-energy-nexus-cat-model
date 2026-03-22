@@ -2,7 +2,7 @@
 """
 Created on Wed Jan 28 13:42:10 2026
 
-@author: tirki
+@author: Víctor García Carrasco
 """
 
 #%%
