@@ -2,7 +2,7 @@
 """
 Created on Sat Jan 17 12:29:14 2026
 
-@author: tirki
+@author: Víctor García Carrasco
 """
 
 from EnerSimFunc import (generar_matriu_estalvi)
