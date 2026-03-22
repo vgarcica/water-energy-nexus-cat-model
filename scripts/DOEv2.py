@@ -2,7 +2,7 @@
 """
 Created on Fri Jan 16 13:43:30 2026
 
-@author: tirki
+@author: Víctor García Carrasco
 """
 
 import pandas as pd
